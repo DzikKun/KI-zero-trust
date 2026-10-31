@@ -1,0 +1,25 @@
+{
+  "name": "zero-trust-nilai",
+  "version": "1.0.0",
+  "description": "Sistem Nilai dengan prinsip zero trust (praktikum Keamanan Informasi)",
+  "private": true,
+  "scripts": {
+    "start": "concurrently -n gateway,nilai,transkrip -c green,cyan,magenta \"npm:start:gateway\" \"npm:start:nilai\" \"npm:start:transkrip\"",
+    "start:gateway": "node --env-file=.env gateway/server.js",
+    "start:nilai": "node --env-file=.env service-nilai/server.js",
+    "start:transkrip": "node --env-file=.env service-transkrip/server.js",
+    "seed": "node --env-file=.env scripts/seed.js",
+    "audit": "node --env-file=.env scripts/show-audit.js",
+    "set-hours": "node scripts/set-hours.js",
+    "test": "node --env-file=.env test/run-tests.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
